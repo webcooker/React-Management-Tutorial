@@ -33,10 +33,9 @@ class App extends Component {
 
   componentDidMount() {
     this.timer = setInterval(this.progress, 20);
-    // 로딩지연을 통해 프로그레스바 표시
-    // this.callApi()
-    //   .then(res => this.setState({customers: res}))
-    //   .catch(err => console.log(err));
+    this.callApi()
+      .then(res => this.setState({customers: res}))
+      .catch(err => console.log(err));
   }
 
   callApi = async () => {
@@ -67,7 +66,7 @@ class App extends Component {
           </TableHead>
           <TableBody>
             {this.state.customers ? this.state.customers.map(c => {
-              return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.name} gender={c.gender} job={c.job}/> );
+              return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}/> );
             }) :
             <TableRow>
               <TableCell colSpan="6" align="center">
